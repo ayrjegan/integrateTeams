@@ -1,0 +1,44 @@
+<div>
+    <h1> Users </h1>
+    <table style="border: 1px solid black;">
+        <thead style="border: 1px solid black;">
+            <th style="border: 1px solid black;">#</th>
+            <th style="border: 1px solid black;">ID</th>
+            <th style="border: 1px solid black;">Name</th>
+        </thead>
+        <tbody style="border: 1px solid black;">
+            <tr *ngFor="let user of lstUsers; let i=index;" style="border: 1px solid black;">
+                <td style="border: 1px solid black;">
+                    {{i+1}}
+                    <input type="checkbox" name="check{{i+1}}" [(ngModel)]="selectedUsers[i]">
+                </td>
+                <td style="border: 1px solid black;">{{user.id}}</td>
+                <td style="border: 1px solid black;">{{user.userPrincipalName}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngFor="let user of lstUsers; let i=index">
+        {{user.userPrincipalName}}
+    </div>
+</div>
+
+
+<div>
+    <h1> Groups </h1>
+    <div *ngFor="let group of lstGroups">
+        {{group.displayName}}
+    </div>
+</div>
+
+<div class='row'>
+    <h1> Create Group </h1>
+    <div>
+        <input type="text" name="groupname" placeholder="Group Name" [(ngModel)]="grpName">
+    </div>
+    <div>
+        <textarea type="text" cols="20" rows="3" placeholder="Group Description" [(ngModel)]="grpDesc"></textarea>
+    </div>
+    <div>
+        <button type="button" (click)="createGroup()">Create</button>
+    </div>
+</div>
